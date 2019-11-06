@@ -1,13 +1,8 @@
 import React from "react";
-import {
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button
-} from "reactstrap";
 import "../App.css";
+import { Button } from "reactstrap";
+
+import { Box, Card, Image, Heading, Text } from "rebass";
 
 class ProfileCard extends React.Component {
   constructor() {
@@ -19,7 +14,7 @@ class ProfileCard extends React.Component {
       followers: [],
       login: "",
       avatar_url: "",
-      key: Date(),
+      key: Date()
     };
   }
 
@@ -57,26 +52,48 @@ class ProfileCard extends React.Component {
   render() {
     return (
       <div className="card">
-        <Card>
-          <CardImg
-            className="picture"
-            src={this.state.avatar}
-            alt={this.state.avatar}
-          />
-        </Card>
-        <CardBody>
-          <CardTitle>{this.state.name}</CardTitle>
-          <CardSubtitle>{this.state.location}</CardSubtitle>
-          <Button onClick={this.handleFetchFollowers}>Followers</Button>
-        </CardBody>
-        <div>
+        <Box width={256} className="card">
+          <Card
+            sx={{
+              display: 'center',
+              p: 1,
+              borderRadius: 2,
+              boxShadow: "0 0 16px rgba(0, 0, 0, .25)"
+            }}
+          >
+            <Image src={this.state.avatar} alt={this.state.avatar} />
+            <Box px={2}>
+              <Heading as="h3">{this.state.name}</Heading>
+              <Text fontSize={0}>{this.state.location}</Text>
+            </Box>
+            <Button
+              color="primary"
+              className="btn"
+              onClick={this.handleFetchFollowers}
+            >
+              Followers
+            </Button>
+          </Card>
+        </Box>
+
+        <Box width={256} className="followers-card">
           {this.state.followers.map(fllw => (
-            <div key={fllw.id}>
-              <p>{fllw.login}</p>
-              <img src={fllw.avatar_url} alt={fllw} />
-            </div>
+            <Card
+              sx={{
+                p: 1,
+                borderRadius: 2,
+                boxShadow: "0 0 16px rgba(0, 0, 0, .25)",
+                marginTop: '2rem',
+              }}
+            >
+              <Image src={fllw.avatar_url} alt={fllw.avatar_url} />
+              <Box px={2} key={fllw.id}>
+                <Heading as="h3">{fllw.login}</Heading>
+              </Box>
+            </Card>
           ))}
-        </div>
+          >
+        </Box>
       </div>
     );
   }

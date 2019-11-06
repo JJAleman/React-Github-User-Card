@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 .App-logo {
@@ -23,8 +24,18 @@
 
 
 .card {
+  align-items: center;
+
+}
+
+.followers-card{
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.btn {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
 }
 
 .picture {
