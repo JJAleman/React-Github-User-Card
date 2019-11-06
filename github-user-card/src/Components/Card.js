@@ -18,7 +18,8 @@ class ProfileCard extends React.Component {
       avatar: "",
       followers: [],
       login: "",
-      avatar_url: ""
+      avatar_url: "",
+      key: Date(),
     };
   }
 
@@ -70,7 +71,7 @@ class ProfileCard extends React.Component {
         </CardBody>
         <div>
           {this.state.followers.map(fllw => (
-            <div>
+            <div key={fllw.id}>
               <p>{fllw.login}</p>
               <img src={fllw.avatar_url} alt={fllw} />
             </div>
