@@ -8,7 +8,8 @@ class Card extends React.Component{
         this.state = {
             name: '',
             location: '', 
-            avatar: '',     
+            avatar: '',
+            followers: '',     
         };
     }
 
@@ -21,6 +22,7 @@ class Card extends React.Component{
             name: res.name,
             location: res.location,
             avatar: res.avatar_url,
+            followers: res.followers_url,
           });
         })
         .catch (err => {
@@ -35,7 +37,10 @@ class Card extends React.Component{
             <div>
                 <p>{this.state.name}</p>
                 <p>{this.state.location}</p>
-                <img src={this.state.avatar}/>
+                <img src={this.state.avatar} alt={this.state.avatar}/>
+                <div>
+                    {this.state.followers}
+                </div>
             </div>
         );
     }
